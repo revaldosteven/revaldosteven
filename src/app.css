@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+	
+	body {
+		@apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors;
+	}
+}
+
+@layer components {
+	.prose {
+		@apply text-gray-600 dark:text-gray-400;
+	}
+	
+	.prose h1,
+	.prose h2,
+	.prose h3,
+	.prose h4 {
+		@apply font-bold text-gray-900 dark:text-white mt-8 mb-4;
+	}
+	
+	.prose h1 {
+		@apply text-4xl;
+	}
+	
+	.prose h2 {
+		@apply text-3xl;
+	}
+	
+	.prose h3 {
+		@apply text-2xl;
+	}
+	
+	.prose p {
+		@apply mb-4 leading-relaxed;
+	}
+	
+	.prose ul,
+	.prose ol {
+		@apply mb-4 ml-6;
+	}
+	
+	.prose li {
+		@apply mb-2;
+	}
+	
+	.prose code {
+		@apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono text-primary-600;
+	}
+	
+	.prose pre {
+		@apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
+	}
+	
+	.prose pre code {
+		@apply bg-transparent text-gray-100 p-0;
+	}
+	
+	.prose a {
+		@apply text-primary-600 hover:text-primary-700 underline;
+	}
+	
+	.prose blockquote {
+		@apply border-l-4 border-primary-600 pl-4 italic my-4;
+	}
+}
+
+@layer utilities {
+	/* Custom animations */
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-20px);
+		}
+	}
+	
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
+	}
+	
+	/* Gradient text */
+	.text-gradient {
+		@apply text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600;
+	}
+	
+	/* Glass morphism */
+	.glass {
+		@apply bg-white/10 dark:bg-gray-800/10 backdrop-blur-lg border border-white/20 dark:border-gray-700/20;
+	}
+	
+	/* Smooth transitions */
+	.transition-smooth {
+		@apply transition-all duration-300 ease-in-out;
+	}
+
+	@keyframes shimmer {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.animate-shimmer {
+	animation: shimmer 2s ease-in-out infinite;
+}
+
+	
+}
