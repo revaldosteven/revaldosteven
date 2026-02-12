@@ -104,10 +104,10 @@
 			
 			<FadeIn delay={700}>
 				<div class="flex justify-center gap-4 mb-16">
-					<a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
+					<a href="https://github.com/revaldosteven" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
 						<Github size={24} />
 					</a>
-					<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
+					<a href="https://www.linkedin.com/in/revaldo-steven-655860389/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
 						<Linkedin size={24} />
 					</a>
 					<a href="mailto:revaldosteven1986@gmail.com" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
