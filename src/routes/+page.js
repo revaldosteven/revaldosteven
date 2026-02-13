@@ -15,14 +15,13 @@ export async function load() {
 			}
 		}
 		
-		// Sort by date descending
 		posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 		
 		return {
-			posts
+			posts: posts.slice(0, 3) // Only 3 for homepage
 		};
 	} catch (error) {
-		console.error('Error loading blog posts:', error);
+		console.error('Error loading posts:', error);
 		return {
 			posts: []
 		};
