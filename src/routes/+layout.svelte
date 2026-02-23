@@ -1,10 +1,10 @@
 <script>
 	import '../app.css';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 	import Navbar from '$lib/components/layout/Navbar.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import PageTransition from '$lib/components/animations/PageTransition.svelte';
-	import { onMount } from 'svelte';
 	
 	onMount(() => {
 		const theme = localStorage.getItem('theme') || 

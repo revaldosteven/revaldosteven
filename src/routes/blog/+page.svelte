@@ -104,7 +104,7 @@
 							{/if}
 							
 							<a href="/blog/{post.slug}" class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 text-sm font-medium inline-flex items-center gap-1 group">
-								Read more
+								Read More
 								<ArrowRight size={16} class="group-hover:translate-x-1 transition-transform" />
 							</a>
 						</Card>
@@ -119,11 +119,8 @@
 		{:else}
 			<div class="text-center py-12">
 				<p class="text-gray-600 dark:text-gray-400 text-lg">No articles found matching your criteria.</p>
-				<button 
-					on:click={() => { searchQuery = ''; selectedTag = 'all'; }}
-					class="mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
-				>
-					Clear filters
+				<button on:click={() => { searchQuery = ''; selectedTag = 'all'; }} class="mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+					Clear Filters
 				</button>
 			</div>
 		{/if}

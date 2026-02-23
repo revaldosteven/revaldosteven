@@ -1,27 +1,63 @@
 <script>
-	import { Mail, MapPin, Phone } from 'lucide-svelte';
+	import { Mail, MapPin, Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-svelte';
 	import Button from '../ui/Button.svelte';
 	import Card from '../ui/Card.svelte';
 	import FadeIn from '../animations/FadeIn.svelte';
+	import emailjs from '@emailjs/browser';
 	
 	let formData = {
 		name: '',
 		email: '',
+		phone: '',
 		message: ''
 	};
 	
 	let submitStatus = '';
+	let errorMessage = '';
 	
-	function handleSubmit(e) {
+	// EmailJS credentials
+	const EMAILJS_SERVICE_ID = 'service_s5ydudc';
+	const EMAILJS_TEMPLATE_ID = 'template_bm9xb3l';
+	const EMAILJS_PUBLIC_KEY = 'SpwjoLQinllt1fgNv';
+	
+	async function handleSubmit(e) {
 		e.preventDefault();
-		submitStatus = 'success';
-		console.log('Form submitted:', formData);
+		submitStatus = 'loading';
+		errorMessage = '';
 		
-		formData = { name: '', email: '', message: '' };
-		
-		setTimeout(() => {
-			submitStatus = '';
-		}, 3000);
+		try {
+			const templateParams = {
+				from_name: formData.name,
+				from_email: formData.email,
+				from_phone: formData.phone || 'Not provided',
+				message: formData.message,
+				to_name: 'Revaldo Steven',
+			};
+			
+			const response = await emailjs.send(
+				EMAILJS_SERVICE_ID,
+				EMAILJS_TEMPLATE_ID,
+				templateParams,
+				EMAILJS_PUBLIC_KEY
+			);
+			
+			console.log('Email sent successfully:', response);
+			submitStatus = 'success';
+			formData = { name: '', email: '', phone: '', message: '' };
+			
+			setTimeout(() => {
+				submitStatus = '';
+			}, 5000);
+		} catch (error) {
+			console.error('FULL ERROR:', error);
+			submitStatus = 'error';
+			errorMessage = error.text || error.message || 'Failed to send message. Please try again.';
+			
+			setTimeout(() => {
+				submitStatus = '';
+				errorMessage = '';
+			}, 5000);
+		}
 	}
 </script>
 
@@ -44,7 +80,7 @@
 							<Mail size={24} />
 						</div>
 						<h3 class="font-semibold text-gray-900 dark:text-white mb-2">Email</h3>
-						<a href="mailto:revaldosteven1986@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-primary-600">
+						<a href="mailto:revaldosteven1986@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors">
 							revaldosteven1986@gmail.com
 						</a>
 					</div>
@@ -58,7 +94,7 @@
 							<Phone size={24} />
 						</div>
 						<h3 class="font-semibold text-gray-900 dark:text-white mb-2">Phone</h3>
-						<a href="tel:+6285932531354" class="text-gray-600 dark:text-gray-400 hover:text-primary-600">
+						<a href="tel:+6285932531354" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors">
 							+62 859 325 313 54
 						</a>
 					</div>
@@ -86,33 +122,59 @@
 					<form on:submit={handleSubmit} class="space-y-6">
 						<div>
 							<label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-								Name
+								Name <span class="text-red-500">*</span>
 							</label>
-							<input type="text" id="name" bind:value={formData.name} required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="Your name" />
+							<input type="text" id="name" bind:value={formData.name} required disabled={submitStatus === 'loading'} class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all" placeholder="Your name" />
 						</div>
 						
 						<div>
 							<label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-								Email
+								Email <span class="text-red-500">*</span>
 							</label>
-							<input type="email" id="email" bind:value={formData.email} required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="your.email@example.com" />
+							<input type="email" id="email" bind:value={formData.email} required disabled={submitStatus === 'loading'} class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all" placeholder="your.email@example.com" />
+						</div>
+						
+						<div>
+							<label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+								Phone <span class="text-gray-400 text-xs">(optional)</span>
+							</label>
+							<input type="tel" id="phone" bind:value={formData.phone} disabled={submitStatus === 'loading'} class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all" placeholder="+62 123 456 789" />
 						</div>
 						
 						<div>
 							<label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-								Message
+								Message <span class="text-red-500">*</span>
 							</label>
-							<textarea id="message" bind:value={formData.message} required rows="5" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none" placeholder="Tell me about your project..."></textarea>
+							<textarea id="message" bind:value={formData.message} required rows="5" disabled={submitStatus === 'loading'} class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none disabled:opacity-50 disabled:cursor-not-allowed transition-all" placeholder="Tell me about your project..."></textarea>
 						</div>
 						
 						{#if submitStatus === 'success'}
-							<div class="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-green-800 dark:text-green-300 text-sm">
-								Thank you! Your message has been sent successfully.
+							<div class="flex items-start gap-3 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+								<CheckCircle size={20} class="text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+								<div class="flex-1">
+									<p class="font-semibold text-green-800 dark:text-green-300">Message sent successfully!</p>
+									<p class="text-sm text-green-700 dark:text-green-400 mt-1">Thank you for reaching out. I'll get back to you soon.</p>
+								</div>
 							</div>
 						{/if}
 						
-						<Button type="submit" variant="primary" size="lg">
-							Send Message
+						{#if submitStatus === 'error'}
+							<div class="flex items-start gap-3 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+								<AlertCircle size={20} class="text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+								<div class="flex-1">
+									<p class="font-semibold text-red-800 dark:text-red-300">Failed to send message</p>
+									<p class="text-sm text-red-700 dark:text-red-400 mt-1">{errorMessage}</p>
+								</div>
+							</div>
+						{/if}
+						
+						<Button type="submit" variant="primary" size="lg" disabled={submitStatus === 'loading'}>
+							{#if submitStatus === 'loading'}
+								<Loader2 size={20} class="mr-2 animate-spin" />
+								Sending...
+							{:else}
+								Send Message
+							{/if}
 						</Button>
 					</form>
 				</Card>

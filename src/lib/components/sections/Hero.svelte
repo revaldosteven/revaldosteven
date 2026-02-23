@@ -102,13 +102,13 @@
 			
 			<FadeIn delay={700}>
 				<div class="flex justify-center gap-3 sm:gap-4 mb-12 sm:mb-16 px-4">
-					<a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2.5 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
+					<a href="https://github.com/revaldosteven" target="_blank" rel="noopener noreferrer" class="p-2.5 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
 						<Github size={20} class="sm:w-6 sm:h-6" />
 					</a>
-					<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-2.5 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
+					<a href="https://www.linkedin.com/in/revaldo-steven-655860389/" target="_blank" rel="noopener noreferrer" class="p-2.5 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
 						<Linkedin size={20} class="sm:w-6 sm:h-6" />
 					</a>
-					<a href="mailto:revaldo@example.com" class="p-2.5 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
+					<a href="mailto:revaldosteven1986@gmail.com" class="p-2.5 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all text-gray-700 dark:text-gray-300 hover:text-primary-600">
 						<Mail size={20} class="sm:w-6 sm:h-6" />
 					</a>
 				</div>
@@ -118,14 +118,14 @@
 				<div class="grid grid-cols-3 gap-3 sm:gap-6 lg:gap-8 max-w-3xl mx-auto px-4">
 					<div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-lg">
 						<div class="flex items-baseline justify-center gap-0.5 sm:gap-1 mb-1 sm:mb-2">
-							<span class="text-2xl sm:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">5</span>
+							<span class="text-2xl sm:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">3</span>
 							<span class="text-xl sm:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">+</span>
 						</div>
 						<div class="text-[10px] sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400 leading-tight">Years<br class="sm:hidden" /> Experience</div>
 					</div>
 					<div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-lg">
 						<div class="flex items-baseline justify-center gap-0.5 sm:gap-1 mb-1 sm:mb-2">
-							<span class="text-2xl sm:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">50</span>
+							<span class="text-2xl sm:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">30</span>
 							<span class="text-xl sm:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">+</span>
 						</div>
 						<div class="text-[10px] sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400 leading-tight">Projects<br class="sm:hidden" /> Completed</div>
